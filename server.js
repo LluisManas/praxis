@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 // connecting to Mongo
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/Questions", {
+  .connect(process.env.MONGODB_URI || "mongodb://localhost:27017/Questions", {
     useNewUrlParser: true,
   })
   .then(() => console.log("MongoDB connected.."))
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, " client", "build", "index.html"));
+    res.sendFile(path.join(__dirname, "/client/build/index.html"));
   });
 }
 
