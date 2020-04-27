@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 
 // connecting to Mongo
 mongoose
-  .connect("mongodb://localhost:27017/Questions", { useNewUrlParser: true })
+  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/Questions", {
+    useNewUrlParser: true,
+  })
   .then(() => console.log("MongoDB connected.."))
   .catch((err) => console.log(err));
 
